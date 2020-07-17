@@ -8,18 +8,18 @@
     <!-- the authentication is required -->
     <bool name="MAIL_SMTP_AUTH">true</bool>
     <!-- the mail transport protocol -->
-    <string name="MAIL_TRANSPORT_PROTOCOL">smtp</string>
+    <string name="MAIL_TRANSPORT_PROTOCOL" translatable="false">smtp</string>
     <!-- the host name -->
-    <string name="MAILE_HOST">smtp.163.com</string>
+    <string name="MAILE_HOST" translatable="false">smtp.163.com</string>
     <!-- the account -->
-    <string name="MAILE_USER">myappdebug@163.com</string>
+    <string name="MAILE_USER" translatable="false">myappdebug@163.com</string>
     <!-- the authorization password -->
-    <string name="MAILE_PASSWORD">yunxueshidai10</string>
+    <string name="MAILE_PASSWORD" translatable="false">yunxueshidai10</string>
     <!-- the sender -->
-    <string name="MAILE_FROM">myappdebug@163.com</string>
+    <string name="MAILE_FROM" translatable="false">myappdebug@163.com</string>
     <!-- the receiver -->
-    <string name="MAILE_TO">myappdebug@163.com</string>
+    <string name="MAILE_TO" translatable="false">myappdebug@163.com</string>
     <!-- the subject of an email -->
-    <string name="MAILE_SUBBJECT">崩溃日志</string>
+    <string name="MAILE_SUBBJECT" translatable="false">崩溃日志</string>
     
 </resources>
