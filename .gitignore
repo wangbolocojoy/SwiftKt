@@ -111,8 +111,5 @@ proguard-rules.pro
 .idea/jarRepositories.xml
 .idea/misc.xml
 .idea/runConfigurations.xml
-gradle.properties
-gradle/
-gradlew
-gradlew.bat
+gradle/wrapper
 settings.gradle
