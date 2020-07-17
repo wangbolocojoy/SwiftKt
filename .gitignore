@@ -101,3 +101,20 @@ lint/tmp/
 .externalNativeBuild
 .cxx
 
+.gitignore
+build.gradle
+libs/
+proguard-rules.pro
+src/
+.idea/.name
+.idea/codeStyles/
+.idea/inspectionProfiles/
+.idea/jarRepositories.xml
+.idea/misc.xml
+.idea/runConfigurations.xml
+app/
+gradle.properties
+gradle/
+gradlew
+gradlew.bat
+settings.gradle
