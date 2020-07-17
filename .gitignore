@@ -111,3 +111,4 @@ proguard-rules.pro
 .idea/misc.xml
 .idea/runConfigurations.xml
 gradle/wrapper
+src/main/java/com/btm/mylibrary/api/
