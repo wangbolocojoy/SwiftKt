@@ -102,7 +102,6 @@ lint/tmp/
 .cxx
 
 .gitignore
-build.gradle
 libs/
 proguard-rules.pro
 .idea/.name
@@ -112,4 +111,3 @@ proguard-rules.pro
 .idea/misc.xml
 .idea/runConfigurations.xml
 gradle/wrapper
-settings.gradle
