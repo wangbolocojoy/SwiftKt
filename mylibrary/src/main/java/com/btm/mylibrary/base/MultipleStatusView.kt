@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.btm.mylibrary.R
 import java.util.*
 
@@ -19,7 +19,7 @@ internal class MultipleStatusView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : RelativeLayout(context, attrs, defStyleAttr) {
+) : ConstraintLayout(context, attrs, defStyleAttr) {
     private var mEmptyView: View? = null
     private var mErrorView: View? = null
     private var mLoadingView: View? = null
