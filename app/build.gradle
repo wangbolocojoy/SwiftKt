@@ -6,20 +6,35 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.btm.swiftkt"
+//        applicationId "com.btm.swiftkt"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        flavorDimensions "versionCode"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    productFlavors{
+        bendi{
+            applicationId "com.btm.swiftkt.bendi"
+            buildConfigField "String","BaseApi",'"http://127.0.0.1"'
+            manifestPlaceholders = [app_name:"本地SiwftKt"]
+        }
+        aliyun{
+            applicationId "com.btm.swiftkt.aliyun"
+            buildConfigField "String","BaseApi",'"https://www.90btm.com"'
+            manifestPlaceholders = [app_name:"SiwftKt"]
 
+        }
+
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+
     }
 }
 
