@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- the SSL encryption -->
+    <bool name="MAIL_SMTP_SSL_ENABLE">true</bool>
+    <!-- whether to open the email debug logs -->
+    <bool name="MAIL_DEBUG">true</bool>
+    <!-- the authentication is required -->
+    <bool name="MAIL_SMTP_AUTH">true</bool>
+    <!-- the mail transport protocol -->
+    <string name="MAIL_TRANSPORT_PROTOCOL">smtp</string>
+    <!-- the host name -->
+    <string name="MAILE_HOST">smtp.163.com</string>
+    <!-- the account -->
+    <string name="MAILE_USER">myappdebug@163.com</string>
+    <!-- the authorization password -->
+    <string name="MAILE_PASSWORD">yunxueshidai10</string>
+    <!-- the sender -->
+    <string name="MAILE_FROM">myappdebug@163.com</string>
+    <!-- the receiver -->
+    <string name="MAILE_TO">myappdebug@163.com</string>
+    <!-- the subject of an email -->
+    <string name="MAILE_SUBBJECT">崩溃日志</string>
+    
+</resources>

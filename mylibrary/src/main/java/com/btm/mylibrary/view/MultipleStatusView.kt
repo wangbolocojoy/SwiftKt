@@ -1,4 +1,4 @@
-package com.btm.mylibrary.base
+package com.btm.mylibrary.view
 
 import android.content.Context
 import android.util.AttributeSet
@@ -15,7 +15,7 @@ import java.util.*
  * @desc:
  * @项目: SwiftKt
  */
-internal class MultipleStatusView @JvmOverloads constructor(
+class MultipleStatusView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
@@ -85,7 +85,8 @@ internal class MultipleStatusView @JvmOverloads constructor(
      */
     private fun showEmpty(view: View?, layoutParams: ViewGroup.LayoutParams?) {
         checkNull(view, "Empty view is null!")
-        viewStatus = STATUS_EMPTY
+        viewStatus =
+            STATUS_EMPTY
         if (null == mEmptyView) {
             mEmptyView = view
             val emptyRetryView =
@@ -121,7 +122,8 @@ internal class MultipleStatusView @JvmOverloads constructor(
      */
     private fun showError(view: View?, layoutParams: ViewGroup.LayoutParams?) {
         checkNull(view, "Error view is null!")
-        viewStatus = STATUS_ERROR
+        viewStatus =
+            STATUS_ERROR
         if (null == mErrorView) {
             mErrorView = view
             val errorRetryView =
@@ -157,7 +159,8 @@ internal class MultipleStatusView @JvmOverloads constructor(
      */
     private fun showLoading(view: View?, layoutParams: ViewGroup.LayoutParams?) {
         checkNull(view, "Loading view is null!")
-        viewStatus = STATUS_LOADING
+        viewStatus =
+            STATUS_LOADING
         if (null == mLoadingView) {
             mLoadingView = view
             mOtherIds!!.add(mLoadingView!!.id)
@@ -191,7 +194,8 @@ internal class MultipleStatusView @JvmOverloads constructor(
         layoutParams: ViewGroup.LayoutParams?
     ) {
         checkNull(view, "No network view is null!")
-        viewStatus = STATUS_NO_NETWORK
+        viewStatus =
+            STATUS_NO_NETWORK
         if (null == mNoNetworkView) {
             mNoNetworkView = view
             val noNetworkRetryView =
@@ -209,10 +213,13 @@ internal class MultipleStatusView @JvmOverloads constructor(
      * 显示内容视图
      */
     private fun showContent() {
-        viewStatus = STATUS_CONTENT
+        viewStatus =
+            STATUS_CONTENT
         if (null == mContentView && mContentViewResId != NULL_RESOURCE_ID) {
             mContentView = mInflater!!.inflate(mContentViewResId, null)
-            addView(mContentView, 0, DEFAULT_LAYOUT_PARAMS)
+            addView(mContentView, 0,
+                DEFAULT_LAYOUT_PARAMS
+            )
         }
         showContentView()
     }
