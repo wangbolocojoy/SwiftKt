@@ -1,12 +1,10 @@
-package com.hazz.kotlinmvp.net
 
+import ApiService
 import com.btm.mylibrary.utils.Constants
 import com.btm.mylibrary.utils.KeyUtils
 import com.btm.swiftkt.app.MyApplication
 import com.btm.swiftkt.utils.NetworkUtil
 import com.btm.swiftkt.utils.Preference
-import com.hazz.kotlinmvp.api.ApiService
-import com.hazz.kotlinmvp.api.UrlConstant
 import com.orhanobut.logger.Logger
 import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor

@@ -1,4 +1,3 @@
-package com.hazz.kotlinmvp.api
 
 /**
  * Created by wb on 2018/11/16.

@@ -1,5 +1,3 @@
-import com.zhongtushiren.housekeeper.base.IBaseView
-import com.zhongtushiren.housekeeper.base.IPresenter
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
