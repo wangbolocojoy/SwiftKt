@@ -1,4 +1,4 @@
-package com.btm.swiftkt
+package com.btm.mylibrary
 
 import org.junit.Test
 
@@ -12,10 +12,6 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-
-        var a = 12
-        var b = 13
-        var c = a+b
-        print(c)
+        assertEquals(4, 2 + 2)
     }
 }
