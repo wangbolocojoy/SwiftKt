@@ -12,7 +12,7 @@ import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
 
-/**
+/**阿斯顿
  * @author wb
  * created: 2017/10/25
  * desc:BaseActivity基类

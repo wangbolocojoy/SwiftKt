@@ -2,25 +2,30 @@ package com.btm.swiftkt.ui.ac
 
 import BaseActivity
 import TabEntity
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentTransaction
 import com.btm.mylibrary.view.tab.listener.CustomTabEntity
 import com.btm.mylibrary.view.tab.listener.OnTabSelectListener
 import com.btm.swiftkt.R
-import com.btm.swiftkt.ui.fm.HomeFullscreenFragment
+import com.btm.swiftkt.ui.fm.tab.TabDiscoverFragment
+import com.btm.swiftkt.ui.fm.tab.TabHomeFullscreenFragment
+import com.btm.swiftkt.ui.fm.tab.TabMineFragment
+import com.btm.swiftkt.ui.fm.tab.TabSearchFriendFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
 
 class MainActivity : BaseActivity(){
     private var mIndex = 0
     private val mIconUnSelectIds =
-        intArrayOf(R.mipmap.untab1)
+        intArrayOf(R.mipmap.untab1,R.mipmap.untab1,R.mipmap.untab1,R.mipmap.untab1)
     // 被选中的图标
-    private val mTitles = arrayOf("足迹")
-    private val mIconSelectIds = intArrayOf(R.mipmap.tab1)
+    private val mTitles = arrayOf("首页","发现","推荐","我的")
+    private val mIconSelectIds = intArrayOf(R.mipmap.tab1,R.mipmap.tab1,R.mipmap.tab1,R.mipmap.tab1)
     private val mTabEntities = ArrayList<CustomTabEntity>()
-    private var homeFullscreenFragment:HomeFullscreenFragment? = null
+    private var tabhomeFullscreenFragment: TabHomeFullscreenFragment? = null
+    private var tabSearchFriendFragment: TabSearchFriendFragment? = null
+    private var tabDiscoverFragment: TabDiscoverFragment? = null
+    private var tabMineFragment: TabMineFragment? = null
     /**
      *  加载布局
      */
@@ -64,8 +69,10 @@ class MainActivity : BaseActivity(){
         })
     }
     private fun hideFragments(transaction: FragmentTransaction) {
-//        mConvFragment?.let { transaction.hide(it) }
-        homeFullscreenFragment?.let { transaction.hide(it) }
+        tabhomeFullscreenFragment?.let { transaction.hide(it) }
+        tabDiscoverFragment?.let { transaction.hide(it) }
+        tabSearchFriendFragment?.let { transaction.hide(it) }
+        tabMineFragment?.let { transaction.hide(it) }
 
 
     }
@@ -73,22 +80,31 @@ class MainActivity : BaseActivity(){
         val transaction = supportFragmentManager.beginTransaction()
         hideFragments(transaction)
         when (position) {
-//            0 -> mConvFragment?.let {
-//                transaction.show(it)
-//            } ?: TabConversationFragment.getInstance(mTitles[position]).let {
-//                mConvFragment = it
-//                transaction.add(R.id.fl_container, it, "session")
-//            }
-            0 -> homeFullscreenFragment?.let {
+
+            0 -> tabhomeFullscreenFragment?.let {
                 transaction.show(it)
-            } ?: HomeFullscreenFragment.getInstance(mTitles[position]).let {
-                homeFullscreenFragment = it
-                transaction.add(R.id.fl_container, it, "foot")
+            } ?: TabHomeFullscreenFragment.getInstance(mTitles[position]).let {
+                tabhomeFullscreenFragment = it
+                transaction.add(R.id.fl_container, it, "home")
+            }
+            1 -> tabDiscoverFragment?.let {
+                transaction.show(it)
+            } ?: TabDiscoverFragment.getInstance(mTitles[position]).let {
+            tabDiscoverFragment = it
+                transaction.add(R.id.fl_container, it, "discover")
+            } 2 -> tabSearchFriendFragment?.let {
+                transaction.show(it)
+            } ?: TabSearchFriendFragment.getInstance(mTitles[position]).let {
+            tabSearchFriendFragment = it
+                transaction.add(R.id.fl_container, it, "search")
+            }3 -> tabMineFragment?.let {
+                transaction.show(it)
+            } ?: TabMineFragment.getInstance(mTitles[position]).let {
+            tabMineFragment = it
+                transaction.add(R.id.fl_container, it, "mine")
             }
 
-            else -> {
 
-            }
         }
         mIndex = position
         tab_layout.currentTab = mIndex

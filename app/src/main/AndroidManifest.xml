@@ -14,12 +14,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.ac.login.RegisterActivity"></activity>
         <activity
-            android:name=".ui.ac.LoginViewActivity"
+            android:name=".ui.ac.login.LoginViewActivity"
             android:label="@string/title_activity_login"
-            tools:ignore="DuplicateActivity,Instantiatable" />
-        <activity android:name=".ui.ac.MainActivity"
-            tools:ignore="Instantiatable">
+            tools:ignore="DuplicateActivity,Instantiatable" >
+
+        </activity>
+        <activity
+            android:name=".ui.ac.MainActivity"
+            tools:ignore="Instantiatable"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="8dp"/>
+    <stroke android:color="@color/app_color_theme_7"
+        android:width="1dp" tools:ignore="StateListReachable" />
+    <solid android:color="@color/app_color_theme_7"/>
+</shape>

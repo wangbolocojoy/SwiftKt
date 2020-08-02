@@ -1,15 +1,18 @@
-package com.btm.swiftkt.ui.ac
+package com.btm.swiftkt.ui.ac.login
 
 import BaseActivity
-
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import com.btm.swiftkt.R
 
-class LoginViewActivity : BaseActivity() {
+class RegisterActivity :BaseActivity(){
+
 
     /**
      *  加载布局
      */
-    override fun layoutId() = R.layout.activity_login_view
+    override fun layoutId() =R.layout.activity_register
+
 
     /**
      * 初始化数据
@@ -21,7 +24,9 @@ class LoginViewActivity : BaseActivity() {
      * 初始化 View
      */
     override fun initView() {
+        title = "注册"
     }
+
 
     /**
      * 开始请求
