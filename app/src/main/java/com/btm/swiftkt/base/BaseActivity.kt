@@ -1,3 +1,5 @@
+package com.btm.swiftkt.base
+
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -11,13 +13,18 @@ import io.reactivex.annotations.NonNull
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
+/**
 
-/**阿斯顿
- * @author wb
- * created: 2017/10/25
- * desc:BaseActivity基类
+ * @Auther: hero
+
+ * @datetime: 2020/8/4 09:01
+
+ * @desc:
+
+ * @项目:  SwiftKt
+
  */
-abstract class BaseActivity : AppCompatActivity(),EasyPermissions.PermissionCallbacks {
+abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
     /**
      * 多种状态的 View 的切换
      */
@@ -128,14 +135,12 @@ abstract class BaseActivity : AppCompatActivity(),EasyPermissions.PermissionCall
         if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
             Toast.makeText(this, "已拒绝权限" + sb + "并不再询问", Toast.LENGTH_SHORT).show()
             AppSettingsDialog.Builder(this)
-                    .setRationale("此功能需要" + sb + "权限，否则无法正常使用，是否打开设置")
-                    .setPositiveButton("好")
-                    .setNegativeButton("不行")
-                    .build()
-                    .show()
+                .setRationale("此功能需要" + sb + "权限，否则无法正常使用，是否打开设置")
+                .setPositiveButton("好")
+                .setNegativeButton("不行")
+                .build()
+                .show()
         }
     }
 
 }
-
-

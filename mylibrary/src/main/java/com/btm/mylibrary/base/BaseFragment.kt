@@ -11,11 +11,7 @@ import io.reactivex.annotations.NonNull
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
-/**
- * @author wb
- * created: 2017/10/25
- * desc:
- */
+
 
  abstract class BaseFragment: Fragment(),EasyPermissions.PermissionCallbacks{
 
