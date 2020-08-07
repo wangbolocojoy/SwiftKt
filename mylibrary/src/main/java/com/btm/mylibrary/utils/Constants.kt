@@ -23,7 +23,7 @@ class Constants private constructor() {
     companion object {
         var KEY_PUBLIC_KEY = "PUBLIC_KEY"
         var DEVICECODE = "DEVICECODE"
-        var APISERVICE = "SERVICE"
+        var APISERVICE = "https://90btm.com/back-1"
         var WSSOCKET ="WSSOCKET"
         var KEY_PRIVATE_KEY = "PRIVATE_KEY"
         var AES_KEY = "AES_KEY"

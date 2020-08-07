@@ -87,9 +87,9 @@ object RetrofitManager {
                 .header("Content-type", "application/json")
                 .header("devicecode", devicecode)
                 .header("deviceType", "android")
-                .header("signature", getSignature(originalRequest.body()))
+                .header("signature", getSignature(originalRequest.body())?: "")
                 .header("CurrentTime", time)
-                .header("SignatureTime", getSignaTime(time))
+                .header("SignatureTime", getSignaTime(time)?:"")
                 .method(originalRequest.method(), originalRequest.body())
             val request = requestBuilder.build()
             chain.proceed(request)
@@ -97,10 +97,10 @@ object RetrofitManager {
     }
 
 
-    private fun getSignature(request: RequestBody?): String {
+    private fun getSignature(request: RequestBody?): String? {
         return KeyUtils.sign(bodyToString(request), privatekey)
     }
-    private fun getSignaTime(time:String):String{
+    private fun getSignaTime(time:String):String?{
         return KeyUtils.sign(time, privatekey)
     }
 
@@ -220,7 +220,6 @@ object RetrofitManager {
 
             })
             .sslSocketFactory(httpsClient.sslSocketFactory())
-
             .addInterceptor(addQueryParameterInterceptor())  //参数添加
             .addInterceptor(addHeaderInterceptor()) // token过滤
             .addInterceptor(httpLoggingInterceptor) //日志,所有的请求响应度看到
