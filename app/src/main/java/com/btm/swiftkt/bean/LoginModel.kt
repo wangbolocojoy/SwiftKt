@@ -28,3 +28,43 @@ data class LoginModel(
     val token: String?,
     val userSex: Boolean?
 )
+data class HomeModel(
+    val `data`: List<Data>?,
+    val msg: String?,
+    val status: Int?
+)
+
+data class Data(
+    val author: Author?,
+    val creatTime: String?,
+    val id: Int?,
+    val isCollection: Boolean?,
+    val isStart: Boolean?,
+    val latitude: String?,
+    val longitude: String?,
+    val msgNum: Int?,
+    val postAddress: String?,
+    val postDetail: String?,
+    val postImages: List<PostImage>?,
+    val postMessageNum: Any?,
+    val postPublic: Boolean?,
+    val postReport: Any?,
+    val postReports: Any?,
+    val postStarts: Int?,
+    val postState: Int?,
+    val userId: Int?
+)
+
+data class Author(
+    val address: String?,
+    val icon: String?,
+    val id: Int?,
+    val nickName: String?
+)
+
+data class PostImage(
+    val fileType: String?,
+    val fileUrl: String?,
+    val id: Int?,
+    val userId: Any?
+)

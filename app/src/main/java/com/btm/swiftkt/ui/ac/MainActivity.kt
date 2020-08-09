@@ -1,17 +1,18 @@
 package com.btm.swiftkt.ui.ac
 
-import BaseActivity
 import TabEntity
 import android.os.Bundle
 import androidx.fragment.app.FragmentTransaction
 import com.btm.mylibrary.view.tab.listener.CustomTabEntity
 import com.btm.mylibrary.view.tab.listener.OnTabSelectListener
 import com.btm.swiftkt.R
+import com.btm.swiftkt.base.BaseActivity
 import com.btm.swiftkt.ui.fm.tab.TabDiscoverFragment
-import com.btm.swiftkt.ui.fm.tab.TabHomeFullscreenFragment
+import com.btm.swiftkt.ui.fm.tab.TabHomeFragment
 import com.btm.swiftkt.ui.fm.tab.TabMineFragment
 import com.btm.swiftkt.ui.fm.tab.TabSearchFriendFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.adapter_tab_home.*
 import java.util.ArrayList
 
 class MainActivity : BaseActivity(){
@@ -22,7 +23,7 @@ class MainActivity : BaseActivity(){
     private val mTitles = arrayOf("首页","发现","推荐","我的")
     private val mIconSelectIds = intArrayOf(R.mipmap.tab1,R.mipmap.tab1,R.mipmap.tab1,R.mipmap.tab1)
     private val mTabEntities = ArrayList<CustomTabEntity>()
-    private var tabhomeFullscreenFragment: TabHomeFullscreenFragment? = null
+    private var tabHomeFragment: TabHomeFragment? = null
     private var tabSearchFriendFragment: TabSearchFriendFragment? = null
     private var tabDiscoverFragment: TabDiscoverFragment? = null
     private var tabMineFragment: TabMineFragment? = null
@@ -69,7 +70,7 @@ class MainActivity : BaseActivity(){
         })
     }
     private fun hideFragments(transaction: FragmentTransaction) {
-        tabhomeFullscreenFragment?.let { transaction.hide(it) }
+        tabHomeFragment?.let { transaction.hide(it) }
         tabDiscoverFragment?.let { transaction.hide(it) }
         tabSearchFriendFragment?.let { transaction.hide(it) }
         tabMineFragment?.let { transaction.hide(it) }
@@ -81,10 +82,10 @@ class MainActivity : BaseActivity(){
         hideFragments(transaction)
         when (position) {
 
-            0 -> tabhomeFullscreenFragment?.let {
+            0 -> tabHomeFragment?.let {
                 transaction.show(it)
-            } ?: TabHomeFullscreenFragment.getInstance(mTitles[position]).let {
-                tabhomeFullscreenFragment = it
+            } ?: TabHomeFragment.getInstance(mTitles[position]).let {
+                tabHomeFragment = it
                 transaction.add(R.id.fl_container, it, "home")
             }
             1 -> tabDiscoverFragment?.let {

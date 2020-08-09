@@ -1,4 +1,5 @@
 
+import com.btm.swiftkt.bean.HomeModel
 import com.btm.swiftkt.bean.LoginModel
 import io.reactivex.Observable
 import okhttp3.RequestBody
@@ -14,68 +15,68 @@ interface ApiService {
     /**
      * 登录
      */
-    @POST("/swiftTemplate/User/login")
+    @POST("/back-1/swiftTemplate/User/login")
     fun login(@Body requestBody: RequestBody): Observable<BaseResponse<LoginModel>>
 
 
     /**
      * 注册
      */
-    @POST("/swiftTemplate/User/register")
+    @POST("/back-1/swiftTemplate/User/register")
     fun register(@Body requestBody: RequestBody): Observable<BaseResponse<LoginModel>>
 
     /**
      * 发消息
      */
-    @POST("/swiftTemplate/User/sendMsg")
+    @POST("/back-1/swiftTemplate/User/sendMsg")
     fun sendMsg(@Body requestBody: RequestBody): Observable<BaseResponse<LoginModel>>
 
     /**
      * 首页
      */
-    @POST("/myApplication/cas/getPageNovelList")
-    fun tabHome(@Body requestBody: RequestBody): Observable<BaseResponse<LoginModel>>
+    @POST("/back-1/swiftTemplate/Post/getPosts")
+    fun tabHome(@Body requestBody: RequestBody): Observable<HomeModel>
 
     /**
      * 上传头像
      */
-    @POST("/swiftTemplate/User/uploadusericon")
+    @POST("/back-1/swiftTemplate/User/uploadusericon")
     fun updateUserIcon(@Body requestBody: RequestBody): Observable<BaseResponse<LoginModel>>
 
     /**
      * 更新用户信息
      */
-    @POST("/swiftTemplate/User/updateUser")
+    @POST("/back-1/swiftTemplate/User/updateUser")
     fun updateUserInfo(@Body requestBody: RequestBody): Observable<BaseResponse<LoginModel>>
 
     /**
      * 关注用户
      */
-    @POST("/swiftTemplate/Follow/followuser")
+    @POST("/back-1/swiftTemplate/Follow/followuser")
     fun followUser(@Body requestBody: RequestBody): Observable<BaseResponse<LoginModel>>
 
     /**
      * 取消关注
      */
-    @POST("/swiftTemplate/Follow/unfollowuser")
+    @POST("/back-1/swiftTemplate/Follow/unfollowuser")
     fun unFollowUser(@Body requestBody: RequestBody): Observable<BaseResponse<LoginModel>>
 
     /**
      * 获取关注列表
      */
-    @POST("/swiftTemplate/Follow/getfollowlist")
+    @POST("/back-1/swiftTemplate/Follow/getfollowlist")
     fun getFollowList(@Body requestBody: RequestBody): Observable<BaseResponse<LoginModel>>
 
     /**
      * 获取粉丝列表
      */
-    @POST("/swiftTemplate/Follow/getfancelist")
+    @POST("/back-1/swiftTemplate/Follow/getfancelist")
     fun getFanceList(@Body requestBody: RequestBody): Observable<BaseResponse<LoginModel>>
 
     /**
      * 查找用户
      */
-    @POST("/swiftTemplate/User/searchfollow")
+    @POST("/back-1/swiftTemplate/User/searchfollow")
     fun searchUser(@Body requestBody: RequestBody): Observable<BaseResponse<LoginModel>>
 
 

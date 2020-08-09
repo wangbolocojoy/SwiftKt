@@ -39,7 +39,7 @@ object RetrofitManager {
      * 动态切换服务器地址
      */
     private fun addQueryParameterInterceptor(): Interceptor {
-        var api by Preference(Constants.APISERVICE, "UrlConstant.BASE_URL")
+        var api by Preference(Constants.APISERVICE, "https://90btm.com/back-1")
         return Interceptor { chain ->
             val originalRequest = chain.request()
             val request: Request

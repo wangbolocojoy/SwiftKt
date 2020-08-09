@@ -1,11 +1,11 @@
 package com.btm.swiftkt.ui.ac.login
 
-import BaseActivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.btm.swiftkt.R
+import com.btm.swiftkt.base.BaseActivity
 
-class RegisterActivity :BaseActivity(){
+class RegisterActivity : BaseActivity(){
 
 
     /**
