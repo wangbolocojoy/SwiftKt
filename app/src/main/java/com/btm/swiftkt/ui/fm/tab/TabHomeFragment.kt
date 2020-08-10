@@ -7,10 +7,10 @@ import com.btm.swiftkt.R
 import com.btm.swiftkt.adapter.TabHomeAdapter
 import com.btm.swiftkt.bean.Data
 import com.btm.swiftkt.bean.HomeModel
-import com.btm.swiftkt.http.MyRequestBody
 import com.btm.swiftkt.mvp.contract.TabHomeContract
 import com.btm.swiftkt.mvp.presenter.TabHomePresenter
 import com.google.gson.JsonObject
+import kotlinx.android.synthetic.main.icloud_toolbar.*
 import kotlinx.android.synthetic.main.myrecycleviewlayout.*
 import okhttp3.MediaType
 import okhttp3.RequestBody
@@ -22,9 +22,9 @@ class TabHomeFragment() : BaseFragment(),TabHomeContract.View {
 
     lateinit var mTitle: String
     private var itemList = ArrayList<Data>()
-    private val  adapter by lazy { TabHomeAdapter(itemList) }
     private val mParent by lazy { TabHomePresenter() }
     private var page = 0
+    val adapter = TabHomeAdapter(null)
     companion object {
         fun getInstance(title: String): TabHomeFragment {
             val fragment = TabHomeFragment()
@@ -44,6 +44,7 @@ class TabHomeFragment() : BaseFragment(),TabHomeContract.View {
      * 初始化 View
      */
     override fun initView() {
+        toolbar_name.text = "首页"
         recyclerview.layoutManager = LinearLayoutManager(context)
         recyclerview.adapter = adapter
     }

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.btm.swiftkt.ui.fm.tab.TabSearchFriendFragment">
-
+    <include layout="@layout/icloud_toolbar"/>
+    <include layout="@layout/myrecycleviewlayout"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
