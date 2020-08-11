@@ -47,21 +47,37 @@ class TabHomeFragment() : BaseFragment(),TabHomeContract.View {
         toolbar_name.text = "首页"
         recyclerview.layoutManager = LinearLayoutManager(context)
         recyclerview.adapter = adapter
+        initRefresh()
     }
 
     /**
      * 懒加载
      */
     override fun lazyLoad() {
+        getListData(1)
+    }
+    fun getListData(type: Int){
         val json = JsonObject()
-        json.addProperty("page",1)
+        json.addProperty("page",page)
         json.addProperty("pageSize",10)
         json.addProperty("userId",0)
         val body: RequestBody =
             RequestBody.create(MediaType.parse("application/json"), json.toString())
-        mParent.requestHomeData(body)
+        mParent.requestHomeData(body,type)
     }
+    fun initRefresh(){
+        myRefreshLayout.setOnRefreshListener {
+            page = 0
+            getListData(page)
+            myRefreshLayout.finishRefresh(500)
+        }
+        myRefreshLayout.setOnLoadMoreListener {
+            page+=1
+            getListData(page)
+            myRefreshLayout.finishLoadMore(500)
+        }
 
+    }
     override fun onDestroy() {
         mParent.detachView()
         super.onDestroy()
@@ -75,8 +91,21 @@ class TabHomeFragment() : BaseFragment(),TabHomeContract.View {
     /**
      * 获取首页结果
      */
-    override fun homeDataResult(model: HomeModel?) {
-        adapter.setNewData(model?.data)
+    override fun homeDataResult(model: HomeModel?,type: Int) {
+        if (type == 1){
+            itemList = model?.data as ArrayList<Data>
+            if (model.data.size  <9){
+                myRefreshLayout.finishLoadMoreWithNoMoreData()
+            }
+            adapter.setNewData(itemList)
+        }else{
+            model?.data?.let { itemList.addAll(it) }
+            if (model?.data?.size ?:0 <9){
+                myRefreshLayout.finishLoadMoreWithNoMoreData()
+            }
+            adapter.setNewData(itemList)
+            myRefreshLayout.finishLoadMore()
+        }
         adapter.notifyDataSetChanged()
     }
 

@@ -3,6 +3,7 @@ package com.btm.swiftkt.ui.fm.tab
 import BaseFragment
 import android.os.Bundle
 import com.btm.swiftkt.R
+import kotlinx.android.synthetic.main.icloud_toolbar.*
 
 /**
  * 我的
@@ -32,6 +33,7 @@ class TabMineFragment : BaseFragment() {
      * 初始化 ViewI
      */
     override fun initView() {
+        toolbar_name.text = "我的"
     }
 
     /**

@@ -4,6 +4,8 @@ import BaseFragment
 import android.os.Bundle
 
 import com.btm.swiftkt.R
+import kotlinx.android.synthetic.main.icloud_toolbar.*
+
 /**
  * 推荐
  */
@@ -30,6 +32,7 @@ class TabSearchFriendFragment :BaseFragment() {
      * 初始化 ViewI
      */
     override fun initView() {
+        toolbar_name.text = "推荐"
     }
 
     /**

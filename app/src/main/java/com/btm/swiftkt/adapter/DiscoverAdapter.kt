@@ -1,5 +1,6 @@
 package com.btm.swiftkt.adapter
 
+import android.view.View
 import android.widget.ImageView
 import com.btm.swiftkt.R
 import com.btm.swiftkt.bean.Data
@@ -21,7 +22,13 @@ class DiscoverAdapter(data:ArrayList<Data>):BaseQuickAdapter<Data,BaseViewHolder
      * @param item   The item that needs to be displayed.
      */
     override fun convert(helper: BaseViewHolder?, item: Data?) {
-        helper?.getView<ImageView>(R.id.imageView4)?.let { Glide.with(it).load(item?.postImages?.get(0)?.fileUrl).into(it) }
+        helper?.getView<ImageView>(R.id.imageView6)?.let{ if ((item?.postImages?.size ?:0) > 1){
+            it.visibility = View.VISIBLE
+        }else{
+            it.visibility = View.GONE
+        }
+        }
+        helper?.getView<ImageView>(R.id.imageView5)?.let { Glide.with(it).load(item?.postImages?.get(0)?.fileUrl).into(it) }
     }
 
 }

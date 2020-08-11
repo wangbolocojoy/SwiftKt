@@ -14,13 +14,13 @@ import okhttp3.RequestBody
  */
 class TabHomePresenter :BasePresenter<TabHomeContract.View>(),TabHomeContract.Presenter{
     private val model by lazy { TabHomeModel() }
-    override fun requestHomeData(body: RequestBody) {
+    override fun requestHomeData(body: RequestBody,type:Int) {
         checkViewAttached()
         mRootView?.showLoading()
-        val disposable = model.mdTabHomeData(body)?.subscribe({
+        val disposable = model.mdTabHomeData(body,type)?.subscribe({
             mRootView?.apply {
                 dismissLoading()
-                homeDataResult(it)
+                homeDataResult(it,type)
             }
         },{
             mRootView?.apply {

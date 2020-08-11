@@ -17,7 +17,7 @@ interface TabHomeContract {
         /**
          * 获取首页结果
          */
-        fun homeDataResult(model: HomeModel?)
+        fun homeDataResult(model: HomeModel?,type:Int)
 
         /**
          * 获取点赞结果
@@ -35,7 +35,7 @@ interface TabHomeContract {
     }
 
     interface Presenter {
-        fun requestHomeData(body: RequestBody)
+        fun requestHomeData(body: RequestBody,type:Int)
         fun requestStart(body: RequestBody)
         fun requestCollection(body: RequestBody)
     }

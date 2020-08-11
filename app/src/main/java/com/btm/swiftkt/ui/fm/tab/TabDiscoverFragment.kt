@@ -10,7 +10,8 @@ import com.btm.swiftkt.bean.HomeModel
 import com.btm.swiftkt.mvp.contract.TabHomeContract
 import com.btm.swiftkt.mvp.presenter.TabHomePresenter
 import com.google.gson.JsonObject
-import kotlinx.android.synthetic.main.layout_tab.*
+import kotlinx.android.synthetic.main.adapter_tab_home.*
+import kotlinx.android.synthetic.main.icloud_toolbar.*
 import kotlinx.android.synthetic.main.myrecycleviewlayout.*
 import okhttp3.MediaType
 import okhttp3.RequestBody
@@ -26,11 +27,13 @@ import okhttp3.RequestBody
  * @项目:  SwiftKt
 
  */
-class TabDiscoverFragment():BaseFragment() , TabHomeContract.View{
+class TabDiscoverFragment() : BaseFragment(), TabHomeContract.View {
     private val mParent by lazy { TabHomePresenter() }
     private var itemList = ArrayList<Data>()
     private val adapter by lazy { DiscoverAdapter(itemList) }
     lateinit var mTitle: String
+    private var page = 0
+
     companion object {
         fun getInstance(title: String): TabDiscoverFragment {
             val fragment = TabDiscoverFragment()
@@ -40,9 +43,11 @@ class TabDiscoverFragment():BaseFragment() , TabHomeContract.View{
             return fragment
         }
     }
+
     init {
         mParent.attachView(this)
     }
+
     /**
      * 加载布局
      */
@@ -52,10 +57,10 @@ class TabDiscoverFragment():BaseFragment() , TabHomeContract.View{
      * 初始化 ViewI
      */
     override fun initView() {
-        tv_tab_title.text = "发现"
-        recyclerview.layoutManager = GridLayoutManager(context,3)
+        toolbar_name.text = "发现"
+        recyclerview.layoutManager = GridLayoutManager(context, 3)
         recyclerview.adapter = adapter
-
+        initRefresh()
 
     }
 
@@ -63,20 +68,47 @@ class TabDiscoverFragment():BaseFragment() , TabHomeContract.View{
      * 懒加载
      */
     override fun lazyLoad() {
+       getListData(1)
+    }
+    fun getListData(type: Int){
         val json = JsonObject()
-        json.addProperty("page",1)
+        json.addProperty("page",page)
         json.addProperty("pageSize",21)
         json.addProperty("userId",0)
         val body: RequestBody =
             RequestBody.create(MediaType.parse("application/json"), json.toString())
-        mParent.requestHomeData(body)
+        mParent.requestHomeData(body,type)
     }
+    fun initRefresh(){
+        myRefreshLayout.setOnRefreshListener {
+            page = 0
+            getListData(page)
+            myRefreshLayout.finishRefresh(500)
+        }
+        myRefreshLayout.setOnLoadMoreListener {
+            page+=1
+            getListData(page)
+            myRefreshLayout.finishLoadMore(500)
+        }
 
+    }
     /**
      * 获取首页结果
      */
-    override fun homeDataResult(model: HomeModel?) {
-        itemList = model?.data as ArrayList<Data>
+    override fun homeDataResult(model: HomeModel?,type: Int) {
+        if (type == 1){
+            itemList = model?.data as ArrayList<Data>
+            if (model.data.size  <20){
+                myRefreshLayout.finishLoadMoreWithNoMoreData()
+            }
+            adapter.setNewData(itemList)
+        }else{
+            model?.data?.let { itemList.addAll(it) }
+            if (model?.data?.size ?:0 <20){
+                myRefreshLayout.finishLoadMoreWithNoMoreData()
+            }
+            model?.data?.let { adapter.addData(itemList.size-1, it) }
+        }
         adapter.notifyDataSetChanged()
     }
 
@@ -103,6 +135,7 @@ class TabDiscoverFragment():BaseFragment() , TabHomeContract.View{
 
     override fun dismissLoading() {
     }
+
     override fun onDestroy() {
         mParent.detachView()
         super.onDestroy()

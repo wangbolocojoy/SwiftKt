@@ -6,15 +6,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 
 /**
-
  * @Auther: hero
-
  * @datetime: 2020/8/10 23:16
-
  * @desc:
-
  * @项目:  SwiftKt
-
  */
 class Adapter_Friend(data:ArrayList<Data>):BaseQuickAdapter<Data,BaseViewHolder>(R.layout.adapter_discover) {
     /**

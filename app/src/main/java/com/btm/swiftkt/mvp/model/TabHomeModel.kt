@@ -13,7 +13,7 @@ import okhttp3.RequestBody
  * @项目: SwiftKt
  */
 class TabHomeModel {
-    fun mdTabHomeData(b: RequestBody): Observable<HomeModel>?{
+    fun mdTabHomeData(b: RequestBody,type:Int): Observable<HomeModel>?{
         return RetrofitManager.service.tabHome(b)
             .compose(SchedulerUtils.ioToMain())
     }

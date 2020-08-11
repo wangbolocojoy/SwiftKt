@@ -2,8 +2,10 @@ package com.btm.swiftkt.utils
 
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.btm.swiftkt.R
 import com.btm.swiftkt.bean.PostImage
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.youth.banner.adapter.BannerAdapter
 
 /**
@@ -53,6 +55,7 @@ class ImageAdapter(mDatas: List<PostImage?>?) :
      * @param size     总数
      */
     override fun onBindView(holder: ImageHolder?, data: PostImage?, position: Int, size: Int) {
-        holder?.imageView?.let { Glide.with(it).load(data?.fileUrl).into(it) }
+        holder?.imageView?.let { Glide.with(it).load(data?.fileUrl).placeholder(R.mipmap.itemback).diskCacheStrategy(
+            DiskCacheStrategy.ALL).into(it) }
     }
 }
