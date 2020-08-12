@@ -27,7 +27,13 @@ data class LoginModel(
     val realName: String?,
     val token: String?,
     val userSex: Boolean?
-)
+
+) {
+    override fun toString(): String {
+        return "LoginModel(account=$account, address=$address, birthDay=$birthDay, city=$city, constellation=$constellation, creatTime=$creatTime, easyInfo=$easyInfo, fances=$fances, follows=$follows, icon=$icon, id=$id, likeStarts=$likeStarts, nickName=$nickName, phone=$phone, postNum=$postNum, province=$province, realName=$realName, token=$token, userSex=$userSex)"
+    }
+}
+
 data class HomeModel(
     val `data`: List<Data>?,
     val msg: String?,

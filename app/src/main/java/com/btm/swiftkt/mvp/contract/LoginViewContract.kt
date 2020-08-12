@@ -17,9 +17,18 @@ import okhttp3.RequestBody
 interface LoginViewContract {
     interface Model
     interface View : IBaseView {
-        fun loginResult(model: BaseResponse<LoginModel>)
-        fun registerResult(model: BaseResponse<LoginModel>)
-        fun changePwdResult(model: BaseResponse<LoginModel>)
+        /**
+         * 获取登录结果
+         */
+        fun loginResult(model: BaseResponse<LoginModel>?)
+        /**
+         * 获取注册结果
+         */
+        fun registerResult(model: BaseResponse<LoginModel>?)
+        /**
+         * 获取修改密码结果
+         */
+        fun changePwdResult(model: BaseResponse<LoginModel>?)
         /**
          * 获取错误信息
          */
@@ -27,8 +36,17 @@ interface LoginViewContract {
     }
 
     interface Presenter {
+        /**
+         * 请求登录
+         */
         fun requestLogin(body: RequestBody)
+        /**
+         *请求注册
+         */
         fun requestRegister(body: RequestBody)
+        /**
+         *请求修改密码
+         */
         fun requestChangePwd(body: RequestBody)
     }
 }

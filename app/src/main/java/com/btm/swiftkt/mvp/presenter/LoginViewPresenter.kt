@@ -11,19 +11,20 @@ import okhttp3.RequestBody
  * @desc:
  * @项目: SwiftKt
  */
-class LoginViewPresenter:BasePresenter<LoginViewContract.View>(),LoginViewContract.Presenter{
+class LoginViewPresenter : BasePresenter<LoginViewContract.View>(), LoginViewContract.Presenter {
     private val model by lazy {
         LoginViewModel()
     }
+
     override fun requestLogin(body: RequestBody) {
         checkViewAttached()
         mRootView?.showLoading()
         val disposable = model.mdLogin(body)?.subscribe({
             mRootView?.apply {
-            dismissLoading()
+                dismissLoading()
                 loginResult(it)
             }
-        },{
+        }, {
             mRootView?.apply {
                 dismissLoading()
                 showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
@@ -40,7 +41,7 @@ class LoginViewPresenter:BasePresenter<LoginViewContract.View>(),LoginViewContra
                 dismissLoading()
                 registerResult(it)
             }
-        },{
+        }, {
             mRootView?.apply {
                 dismissLoading()
                 showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
@@ -57,7 +58,7 @@ class LoginViewPresenter:BasePresenter<LoginViewContract.View>(),LoginViewContra
                 dismissLoading()
                 changePwdResult(it)
             }
-        },{
+        }, {
             mRootView?.apply {
                 dismissLoading()
                 showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)

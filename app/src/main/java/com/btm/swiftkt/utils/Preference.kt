@@ -15,7 +15,7 @@ class Preference<T>(val name:String, private val default:T) {
 
 
     companion object {
-        private const val file_name = "zhongtushiren"
+        private const val file_name = "SwiftKtByTomcat"
 
         private val prefs: SharedPreferences by lazy {
             MyApplication.instance().getSharedPreferences(file_name, Context.MODE_PRIVATE)
