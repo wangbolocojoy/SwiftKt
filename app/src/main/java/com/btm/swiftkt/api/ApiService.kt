@@ -26,6 +26,12 @@ interface ApiService {
     fun register(@Body requestBody: RequestBody): Observable<BaseResponse<LoginModel>>
 
     /**
+     * 修改密码
+     */
+    @POST("/back-1/swiftTemplate/User/register")
+    fun changePwd(@Body requestBody: RequestBody): Observable<BaseResponse<LoginModel>>
+
+    /**
      * 发消息
      */
     @POST("/back-1/swiftTemplate/User/sendMsg")

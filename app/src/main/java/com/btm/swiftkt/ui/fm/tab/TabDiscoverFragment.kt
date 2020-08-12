@@ -2,6 +2,7 @@ package com.btm.swiftkt.ui.fm.tab
 
 import BaseFragment
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import com.btm.swiftkt.R
 import com.btm.swiftkt.adapter.DiscoverAdapter
@@ -10,6 +11,7 @@ import com.btm.swiftkt.bean.HomeModel
 import com.btm.swiftkt.mvp.contract.TabHomeContract
 import com.btm.swiftkt.mvp.presenter.TabHomePresenter
 import com.google.gson.JsonObject
+import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.adapter_tab_home.*
 import kotlinx.android.synthetic.main.icloud_toolbar.*
 import kotlinx.android.synthetic.main.myrecycleviewlayout.*
@@ -68,9 +70,9 @@ class TabDiscoverFragment() : BaseFragment(), TabHomeContract.View {
      * 懒加载
      */
     override fun lazyLoad() {
-       getListData(1)
+       getListData(page,1)
     }
-    fun getListData(type: Int){
+    fun getListData(page:Int,type: Int){
         val json = JsonObject()
         json.addProperty("page",page)
         json.addProperty("pageSize",21)
@@ -82,12 +84,12 @@ class TabDiscoverFragment() : BaseFragment(), TabHomeContract.View {
     fun initRefresh(){
         myRefreshLayout.setOnRefreshListener {
             page = 0
-            getListData(page)
+            getListData(page,1)
             myRefreshLayout.finishRefresh(500)
         }
         myRefreshLayout.setOnLoadMoreListener {
             page+=1
-            getListData(page)
+            getListData(page,2)
             myRefreshLayout.finishLoadMore(500)
         }
 
@@ -102,14 +104,18 @@ class TabDiscoverFragment() : BaseFragment(), TabHomeContract.View {
                 myRefreshLayout.finishLoadMoreWithNoMoreData()
             }
             adapter.setNewData(itemList)
+            adapter.notifyDataSetChanged()
         }else{
-            model?.data?.let { itemList.addAll(it) }
+            Logger.d("数量"+itemList.size)
+            model?.data?.let { itemList.addAll(itemList.size-1,it) }
+
             if (model?.data?.size ?:0 <20){
                 myRefreshLayout.finishLoadMoreWithNoMoreData()
             }
-            model?.data?.let { adapter.addData(itemList.size-1, it) }
+
+            adapter.notifyDataSetChanged()
         }
-        adapter.notifyDataSetChanged()
+
     }
 
     /**
