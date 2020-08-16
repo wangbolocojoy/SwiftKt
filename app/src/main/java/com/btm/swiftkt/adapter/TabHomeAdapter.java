@@ -1,9 +1,13 @@
 package com.btm.swiftkt.adapter;
 
+import android.widget.ImageView;
+
 import androidx.annotation.Nullable;
 import com.btm.swiftkt.R;
 import com.btm.swiftkt.bean.Data;
 import com.btm.swiftkt.utils.ImageAdapter;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.youth.banner.Banner;
@@ -51,6 +55,10 @@ public class TabHomeAdapter extends BaseQuickAdapter<Data, BaseViewHolder> {
         banner.isAutoLoop(false);
         banner.setIndicator(new CircleIndicator(mContext));
         banner.setIndicatorGravity(IndicatorConfig.Direction.CENTER);
+        Glide.with(helper.getView(R.id.circleImageView)).load(item.getAuthor().getIcon())
+                .placeholder(R.mipmap.itemback)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into((ImageView) helper.getView(R.id.circleImageView));
     }
 
 

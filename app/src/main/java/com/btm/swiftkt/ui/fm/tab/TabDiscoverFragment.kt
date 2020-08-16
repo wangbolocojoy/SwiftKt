@@ -2,7 +2,6 @@ package com.btm.swiftkt.ui.fm.tab
 
 import BaseFragment
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import com.btm.swiftkt.R
 import com.btm.swiftkt.adapter.DiscoverAdapter
@@ -10,9 +9,8 @@ import com.btm.swiftkt.bean.Data
 import com.btm.swiftkt.bean.HomeModel
 import com.btm.swiftkt.mvp.contract.TabHomeContract
 import com.btm.swiftkt.mvp.presenter.TabHomePresenter
+import com.btm.swiftkt.utils.StatusBarUtil
 import com.google.gson.JsonObject
-import com.orhanobut.logger.Logger
-import kotlinx.android.synthetic.main.adapter_tab_home.*
 import kotlinx.android.synthetic.main.icloud_toolbar.*
 import kotlinx.android.synthetic.main.myrecycleviewlayout.*
 import okhttp3.MediaType
@@ -59,6 +57,8 @@ class TabDiscoverFragment() : BaseFragment(), TabHomeContract.View {
      * 初始化 ViewI
      */
     override fun initView() {
+        activity?.let { StatusBarUtil.darkMode(it) }
+        activity?.let { StatusBarUtil.setPaddingSmart(it, toolbar) }
         toolbar_name.text = "发现"
         recyclerview.layoutManager = GridLayoutManager(context, 3)
         recyclerview.adapter = adapter
@@ -72,7 +72,7 @@ class TabDiscoverFragment() : BaseFragment(), TabHomeContract.View {
     override fun lazyLoad() {
        getListData(page,1)
     }
-    fun getListData(page:Int,type: Int){
+    private fun getListData(page:Int, type: Int){
         val json = JsonObject()
         json.addProperty("page",page)
         json.addProperty("pageSize",21)
@@ -81,7 +81,7 @@ class TabDiscoverFragment() : BaseFragment(), TabHomeContract.View {
             RequestBody.create(MediaType.parse("application/json"), json.toString())
         mParent.requestHomeData(body,type)
     }
-    fun initRefresh(){
+    private fun initRefresh(){
         myRefreshLayout.setOnRefreshListener {
             page = 0
             getListData(page,1)
@@ -99,23 +99,17 @@ class TabDiscoverFragment() : BaseFragment(), TabHomeContract.View {
      */
     override fun homeDataResult(model: HomeModel?,type: Int) {
         if (type == 1){
-            itemList = model?.data as ArrayList<Data>
-            if (model.data.size  <20){
+            adapter.setNewData(model?.data)
+            if (model?.data?.size ?: 0 <20){
                 myRefreshLayout.finishLoadMoreWithNoMoreData()
             }
-            adapter.setNewData(itemList)
-            adapter.notifyDataSetChanged()
         }else{
-            Logger.d("数量"+itemList.size)
-            model?.data?.let { itemList.addAll(itemList.size-1,it) }
-
+            model?.data?.let { adapter.addData(it) }
             if (model?.data?.size ?:0 <20){
                 myRefreshLayout.finishLoadMoreWithNoMoreData()
             }
-
-            adapter.notifyDataSetChanged()
         }
-
+        adapter.notifyDataSetChanged()
     }
 
     /**

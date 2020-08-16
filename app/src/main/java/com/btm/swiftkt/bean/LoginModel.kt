@@ -52,7 +52,7 @@ data class Data(
     val postAddress: String?,
     val postDetail: String?,
     val postImages: List<PostImage>?,
-    val postMessageNum: Any?,
+    val postMessageNum: Int?,
     val postPublic: Boolean?,
     val postReport: Any?,
     val postReports: Any?,
@@ -72,5 +72,5 @@ data class PostImage(
     val fileType: String?,
     val fileUrl: String?,
     val id: Int?,
-    val userId: Any?
+    val userId: Int?
 )

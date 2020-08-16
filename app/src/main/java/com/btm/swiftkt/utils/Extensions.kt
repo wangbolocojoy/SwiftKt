@@ -6,8 +6,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.btm.swiftkt.app.MyApplication
-import java.io.UnsupportedEncodingException
-import java.math.BigInteger
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -91,21 +89,42 @@ fun TextView.checkPwd(message: String): String? {
     }
     return text
 }
-fun String.getMD5Str(): String? {
-    var digest: ByteArray? = null
-    try {
-        val md5: MessageDigest = MessageDigest.getInstance("MD5")
-        digest = md5.digest(this.toByteArray(charset("utf-8")))
-    } catch (e: NoSuchAlgorithmException) {
-        e.printStackTrace()
-    } catch (e: UnsupportedEncodingException) {
-        e.printStackTrace()
+fun TextView.checkYzm(message: String): String? {
+    val text = this.text.toString()
+    if (text.isBlank() || text.length != 6) {
+        MyApplication.instance().showToast(message)
+        return null
     }
-    //16是表示转换为16进制数
-    return BigInteger(1, digest).toString(32)
+    return text
 }
 
 
+/**
+ *
+ * @param plainText
+ * 明文
+ * @return 32位密文
+ */
+fun String.getMD5Str(): String? {
+    var reMd5 = String()
+    try {
+        val md: MessageDigest = MessageDigest.getInstance("MD5")
+        md.update(this.toByteArray())
+        val b: ByteArray = md.digest()
+        var i: Int
+        val buf = StringBuffer("")
+        for (offset in b.indices) {
+            i = b[offset].toInt()
+            if (i < 0) i += 256
+            if (i < 16) buf.append("0")
+            buf.append(Integer.toHexString(i))
+        }
+        reMd5 = buf.toString()
+    } catch (e: NoSuchAlgorithmException) {
+        e.printStackTrace()
+    }
+    return reMd5
+}
 /**
  * 数据流量格式化
  */

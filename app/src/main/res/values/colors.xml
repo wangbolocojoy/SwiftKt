@@ -5,6 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorPrimary1">#008577</color>
     <color name="colorPrimaryDark1">#00574B</color>
+    <color name="color_gray">#9a9a9a</color>
     <color name="colorAccent1">#D81B60</color>
     <color name="app_color_theme_1">#EF5362</color> <!-- Grapefruit -->
     <color name="app_color_theme_2">#FE6D4B</color> <!-- Bittersweet -->
@@ -41,6 +42,8 @@
     <color name="color_division_line">@color/color_lighter_gray</color>
 
     <color name="color_translucent">#00000000</color>
+    <color name="color_translucent12">#20000000</color>
+    <color name="clean">#00000000</color>
     <color name="color_translucent1">#0D000000</color>
     <color name="color_aquamarine">#7FFFD4</color>
 

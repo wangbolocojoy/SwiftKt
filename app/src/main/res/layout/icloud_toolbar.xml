@@ -2,33 +2,30 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/app_color_theme_7">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="@color/app_color_theme_7"
+        android:minHeight="56dp"
+        android:tooltipText="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        tools:ignore="MissingConstraints,UnusedAttribute">
 
         <TextView
+            android:id="@+id/toolbar_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/toolbar_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" android:textSize="18sp" android:typeface="sans"
-            android:textColor="@color/color_white"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/color_translucent"
-        android:theme="?attr/actionBarTheme"
-        android:tooltipText="@string/app_name"
-        android:minHeight="?attr/actionBarSize"
-        android:id="@+id/toolbar" tools:ignore="MissingConstraints,UnusedAttribute"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        />
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text=""
+            android:textColor="@color/color_white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

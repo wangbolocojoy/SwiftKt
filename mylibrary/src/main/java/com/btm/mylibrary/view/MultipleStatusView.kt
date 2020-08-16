@@ -158,7 +158,7 @@ class MultipleStatusView @JvmOverloads constructor(
      * @param layoutParams 布局参数
      */
     private fun showLoading(view: View?, layoutParams: ViewGroup.LayoutParams?) {
-        checkNull(view, "Loading view is null!")
+        checkNull(view, "lloading view is null!")
         viewStatus =
             STATUS_LOADING
         if (null == mLoadingView) {

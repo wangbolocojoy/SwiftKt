@@ -1,141 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:visibility="visible">
 
-
-    <Button
-        android:id="@+id/btn_login"
+    <include
+        android:id="@+id/include5"
+        layout="@layout/icloud_toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/loginbuttonbackground"
-        android:text="登录"
-        android:textColor="@color/color_white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_fgpwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:background="@null"
-        android:text="忘记密码"
-        android:textColor="@color/color_darker_gray"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
-
-    <Button
-        android:id="@+id/btn_toregsister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:background="@null"
-        android:text="注册"
-        android:textColor="@color/app_color_theme_7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
-
-    <TextView
-        android:id="@+id/btn_ys"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="SwiftKt隐私协议"
-        android:textColor="@color/app_color_theme_7"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:text="登录SwiftKt即代表您已经同意SwiftKt隐私协议"
-        android:textSize="12sp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/coasdasjd"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include5">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="6dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
 
-        <View
-            android:id="@+id/view6"
+        <Button
+            android:id="@+id/btn_login"
             android:layout_width="0dp"
-            android:layout_height="1px"
-            android:background="@color/color_darker_gray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <EditText
-            android:id="@+id/editTextTextPassword2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:hint="请输入密码"
-            android:inputType="textPassword"
-            android:maxLines="24"
-            android:textSize="14sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/loginbuttonbackground"
+            android:text="登录"
+            android:textColor="@color/color_white"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_fgpwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:background="@null"
+            android:text="忘记密码"
+            android:textColor="@color/color_darker_gray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="6dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        <Button
+            android:id="@+id/btn_toregsister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@null"
+            android:text="注册"
+            android:textColor="@color/app_color_theme_7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
-        <View
-            android:id="@+id/view7"
-            android:layout_width="0dp"
-            android:layout_height="1px"
-            android:background="@color/color_darker_gray"
+        <TextView
+            android:id="@+id/btn_ys"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="SwiftKt隐私协议"
+            android:textColor="@color/app_color_theme_7"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="登录SwiftKt即代表您已经同意SwiftKt隐私协议"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
-            android:id="@+id/editTextPhone2"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:hint="请输入手机号"
-            android:inputType="phone"
-            android:maxLength="11"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="6dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_login"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                android:background="@color/color_darker_gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextTextPassword2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@null"
+                android:hint="请输入密码"
+                android:inputType="textPassword"
+                android:maxLines="24"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="6dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <View
+                android:id="@+id/view7"
+                android:layout_width="0dp"
+                android:layout_height="1px"
+                android:background="@color/color_darker_gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextPhone2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@null"
+                android:hint="请输入手机号"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include
+        android:id="@+id/loginloding"
+        layout="@layout/icloud_loding"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

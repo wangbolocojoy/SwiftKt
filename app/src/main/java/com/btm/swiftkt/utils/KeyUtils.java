@@ -23,7 +23,7 @@ import javax.crypto.Cipher;
  * @desc:
  * @项目: SwiftKt
  */
-class KeyUtils {
+public class KeyUtils {
     public static String ENCRYPTION_TYPE = "RSA";
     /**
      * 签名算法

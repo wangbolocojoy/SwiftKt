@@ -9,6 +9,7 @@ import com.btm.swiftkt.bean.Data
 import com.btm.swiftkt.bean.HomeModel
 import com.btm.swiftkt.mvp.contract.TabHomeContract
 import com.btm.swiftkt.mvp.presenter.TabHomePresenter
+import com.btm.swiftkt.utils.StatusBarUtil
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.icloud_toolbar.*
 import kotlinx.android.synthetic.main.myrecycleviewlayout.*
@@ -44,6 +45,9 @@ class TabHomeFragment() : BaseFragment(),TabHomeContract.View {
      * 初始化 View
      */
     override fun initView() {
+        activity?.let { StatusBarUtil.darkMode(it) }
+        activity?.let { StatusBarUtil.setPaddingSmart(it, toolbar) }
+        toolbar.navigationIcon?.setTint(resources.getColor(R.color.clean))
         toolbar_name.text = "首页"
         recyclerview.layoutManager = LinearLayoutManager(context)
         recyclerview.adapter = adapter
@@ -54,9 +58,9 @@ class TabHomeFragment() : BaseFragment(),TabHomeContract.View {
      * 懒加载
      */
     override fun lazyLoad() {
-        getListData(1)
+        getListData(page,1)
     }
-    fun getListData(type: Int){
+    private fun getListData(page:Int, type: Int){
         val json = JsonObject()
         json.addProperty("page",page)
         json.addProperty("pageSize",10)
@@ -65,15 +69,15 @@ class TabHomeFragment() : BaseFragment(),TabHomeContract.View {
             RequestBody.create(MediaType.parse("application/json"), json.toString())
         mParent.requestHomeData(body,type)
     }
-    fun initRefresh(){
+    private fun initRefresh(){
         myRefreshLayout.setOnRefreshListener {
             page = 0
-            getListData(page)
+            getListData(page,1)
             myRefreshLayout.finishRefresh(500)
         }
         myRefreshLayout.setOnLoadMoreListener {
             page+=1
-            getListData(page)
+            getListData(page,2)
             myRefreshLayout.finishLoadMore(500)
         }
 
@@ -93,18 +97,16 @@ class TabHomeFragment() : BaseFragment(),TabHomeContract.View {
      */
     override fun homeDataResult(model: HomeModel?,type: Int) {
         if (type == 1){
-            itemList = model?.data as ArrayList<Data>
-            if (model.data.size  <9){
+            adapter.setNewData(model?.data)
+            if (model?.data?.size ?:0 < 9){
                 myRefreshLayout.finishLoadMoreWithNoMoreData()
             }
-            adapter.setNewData(itemList)
+
         }else{
-            model?.data?.let { itemList.addAll(it) }
+            model?.data?.let { adapter.addData( it) }
             if (model?.data?.size ?:0 <9){
                 myRefreshLayout.finishLoadMoreWithNoMoreData()
             }
-            adapter.setNewData(itemList)
-            myRefreshLayout.finishLoadMore()
         }
         adapter.notifyDataSetChanged()
     }

@@ -3,6 +3,7 @@ package com.btm.swiftkt.ui.ac.login
 
 import BaseResponse
 import android.content.Intent
+import android.view.View
 import com.btm.swiftkt.R
 import com.btm.swiftkt.base.BaseActivity
 import com.btm.swiftkt.bean.LoginModel
@@ -11,9 +12,8 @@ import com.btm.swiftkt.mvp.contract.LoginViewContract
 import com.btm.swiftkt.mvp.presenter.LoginViewPresenter
 import com.btm.swiftkt.ui.ac.MainActivity
 import com.btm.swiftkt.utils.*
-import com.google.gson.JsonObject
-import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.activity_login_view.*
+import kotlinx.android.synthetic.main.icloud_toolbar.*
 import okhttp3.MediaType
 import okhttp3.RequestBody
 
@@ -43,7 +43,11 @@ class LoginViewActivity : BaseActivity(), LoginViewContract.View {
      * 初始化 View
      */
     override fun initView() {
-        title = "登录"
+        toolbar_name.text = "登录"
+
+        StatusBarUtil.darkMode(this)
+        StatusBarUtil.setPaddingSmart(this, toolbar)
+        toolbar.navigationIcon = null
         btn_login.setOnClickListener {
             login()
         }
@@ -64,7 +68,7 @@ class LoginViewActivity : BaseActivity(), LoginViewContract.View {
         }
     }
 
-    fun login() {
+    private fun login() {
         val phone = editTextPhone2.checkPhone("手机号格式不正确") ?: return
         val password = editTextTextPassword2.checkPwd("密码格式不正确") ?: return
         val json = MyRequestBody()
@@ -114,9 +118,12 @@ class LoginViewActivity : BaseActivity(), LoginViewContract.View {
     }
 
     override fun showLoading() {
+        loginloding.visibility = View.VISIBLE
     }
 
     override fun dismissLoading() {
+//        progressBar.visibility = View.GONE
+        loginloding.visibility = View.GONE
     }
 
     override fun onDestroy() {

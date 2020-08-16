@@ -1,8 +1,9 @@
 
 import ApiService
-import com.btm.mylibrary.utils.Constants
-import com.btm.mylibrary.utils.KeyUtils
+import com.btm.swiftkt.utils.KeyUtils
+
 import com.btm.swiftkt.app.MyApplication
+import com.btm.swiftkt.utils.Constants
 import com.btm.swiftkt.utils.NetworkUtil
 import com.btm.swiftkt.utils.Preference
 import com.orhanobut.logger.Logger
@@ -33,7 +34,7 @@ object RetrofitManager {
     }
     private var isbind by Preference(Constants.ISBINDID, false)
     private val devicecode by Preference(Constants.DEVICECODE, "")
-    private var token: String by Preference("token", "")
+    private var token: String by Preference(Constants.TOKEN, "")
     private val privatekey: String by Preference(Constants.KEY_PRIVATE_KEY, "")
     /**
      * 动态切换服务器地址
@@ -85,6 +86,7 @@ object RetrofitManager {
             val requestBuilder = originalRequest.newBuilder()
                 // Provide your custom header here
                 .header("Content-type", "application/json")
+                .header("token", token)
                 .header("devicecode", devicecode)
                 .header("deviceType", "android")
                 .header("signature", getSignature(originalRequest.body())?: "")

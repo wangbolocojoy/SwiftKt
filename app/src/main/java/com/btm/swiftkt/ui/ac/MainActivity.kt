@@ -11,6 +11,7 @@ import com.btm.swiftkt.ui.fm.tab.TabDiscoverFragment
 import com.btm.swiftkt.ui.fm.tab.TabHomeFragment
 import com.btm.swiftkt.ui.fm.tab.TabMineFragment
 import com.btm.swiftkt.ui.fm.tab.TabSearchFriendFragment
+import com.btm.swiftkt.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.adapter_tab_home.*
 import java.util.ArrayList
@@ -115,6 +116,7 @@ class MainActivity : BaseActivity(){
      * 初始化 View
      */
     override fun initView() {
+        StatusBarUtil.darkMode(this)
     }
 
     /**

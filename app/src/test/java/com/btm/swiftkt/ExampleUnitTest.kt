@@ -1,8 +1,8 @@
 package com.btm.swiftkt
 
 import org.junit.Test
-
-import org.junit.Assert.*
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -13,9 +13,8 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
 
-        var a = 12
-        var b = 13
-        var c = a+b
-        print(c)
     }
+
+
+
 }
